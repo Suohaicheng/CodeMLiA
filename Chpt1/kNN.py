@@ -10,17 +10,21 @@ def create_simple_data_set():
 
 def file2matrix(file_name):
     fr = open(file_name)
+    # Read all lines, and return it's content as a list 
+    # containing all lines
     lines = fr.readlines()
     num_lines = len(lines)
 
     fr.close()
-
+    # Build a num_lines-row，3-column matrix filling with 0
     data = np.zeros((num_lines, 3))
     labels = []
     index = 0
     for l in lines:
         li = l.strip()
         line_list = li.split('\t')
+        # Matrix's assignment: a 4-element list as a value
+        # is assigned to one row of matrix.
         data[index, :] = line_list[0:3]
         labels.append(int(line_list[-1]))
         index += 1
